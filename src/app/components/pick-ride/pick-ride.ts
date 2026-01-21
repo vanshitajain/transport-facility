@@ -20,24 +20,28 @@ export class PickRide {
   constructor(private fb: FormBuilder, private rideService: RideService) {
     this.form = this.fb.group({
       employeeId: ['', Validators.required],
+      pickupPoint: ['', Validators.required],
+      destination: ['', Validators.required],
       time: ['', Validators.required],
       vehicleType: ['All']
     });
   }
 
   searchRides() {
-    if (this.form.invalid) {
-      this.message = 'Please enter Employee ID and Time.';
+    const { pickupPoint, destination, time, vehicleType } = this.form.value;
+    
+    if (!pickupPoint || !destination || !time) {
+      this.form.markAllAsTouched();
+      this.message = 'Please enter Pickup, Destination and Time.';
       return;
     }
 
-    const { time, vehicleType } = this.form.value;
     const type = vehicleType === 'All' ? undefined : (vehicleType as VehicleType);
 
-    this.rideService.findTimeMatchingRides(time!, type).subscribe({
+    this.rideService.searchRides(pickupPoint!, destination!, time!, type).subscribe({
       next: rides => {
         this.rides = rides;
-        this.message = rides.length === 0 ? 'No rides found within ±60 minutes.' : '';
+        this.message = rides.length === 0 ? 'No rides found matching criteria.' : '';
       },
       error: err => {
         console.error(err);
@@ -47,14 +51,19 @@ export class PickRide {
   }
 
   bookRide(ride: Ride) {
-    const employeeId = this.form.value.employeeId!;
+    const employeeId = this.form.value.employeeId;
+    if (!employeeId) {
+        this.message = 'Please enter your Employee ID to book.';
+        return;
+    }
+    
     this.rideService.bookRide(ride, employeeId).subscribe({
-      next: updatedRideOrError => {
-        if ('error' in updatedRideOrError) {
-          this.message = updatedRideOrError.error;
+      next: (result: any) => {
+        if (result.error) {
+          this.message = result.error;
         } else {
           this.message = 'Ride booked successfully!';
-          this.searchRides(); // refresh list
+          this.searchRides();
         }
       },
       error: err => {

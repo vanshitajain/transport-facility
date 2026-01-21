@@ -2,8 +2,8 @@
 
 <div class="filters">
   <label>Filter by vehicle type:</label>
-  <select [(ngModel)]="vehicleType" (change)="filterByType()">
-    <option [value]="undefined">All</option>
+  <select [ngModel]="vehicleType" (ngModelChange)="onTypeChange($event)">
+    <option value="">All</option>
     <option value="Bike">Bike</option>
     <option value="Car">Car</option>
   </select>

@@ -27,17 +27,33 @@ vehicleTypes: VehicleType[] = ['Bike', 'Car'];
       pickupPoint: ['', Validators.required],
       destination: ['', Validators.required]
     });
+
+    this.form.get('vehicleType')?.valueChanges.subscribe(type => {
+      const seatsControl = this.form.get('vacantSeats');
+      if (type === 'Bike') {
+        seatsControl?.setValidators([Validators.required, Validators.min(1), Validators.max(1)]);
+        if (seatsControl?.value && seatsControl.value > 1) seatsControl.setValue(1);
+      } else {
+        seatsControl?.setValidators([Validators.required, Validators.min(1), Validators.max(7)]);
+      }
+      seatsControl?.updateValueAndValidity();
+    });
   }
   submit() {
     if (this.form.invalid) {
+      this.form.markAllAsTouched();
       this.message = 'Please fill all mandatory fields correctly.';
       return;
     }
 
     this.rideService.addRide(this.form.value as any).subscribe({
-      next: ride => {
-        this.message = 'Ride added successfully!';
-        this.form.reset({ vehicleType: 'Bike', vacantSeats: 1 });
+      next: (result: any) => {
+        if (result.error) {
+          this.message = result.error;
+        } else {
+          this.message = 'Ride added successfully!';
+          this.form.reset({ vehicleType: 'Bike', vacantSeats: 1 });
+        }
       },
       error: err => {
         console.error(err);

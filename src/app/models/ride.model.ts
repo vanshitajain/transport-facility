@@ -12,3 +12,10 @@ export interface Ride {
   date: string;               // YYYY-MM-DD (current day only)
   bookedEmployeeIds: string[]; // employees who booked this ride
 }
+
+export interface Booking {
+  id: string;
+  rideId: string;
+  passengerEmployeeId: string;
+  date: string;
+}

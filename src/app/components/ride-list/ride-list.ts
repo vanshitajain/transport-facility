@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ride-list.scss',
 })
 export class RideList implements OnInit {
+  allRides: Ride[] = [];
   rides: Ride[] = [];
-  vehicleType?: VehicleType;
+  vehicleType: VehicleType | '' = '';
   message = '';
 
   constructor(private rideService: RideService) {}
@@ -22,16 +23,11 @@ export class RideList implements OnInit {
     this.loadRides();
   }
 
-  // Load rides from backend
   loadRides() {
     this.rideService.getRides().subscribe({
       next: rides => {
-        this.rides = rides;
-        if (rides.length === 0) {
-          this.message = 'No rides available for today.';
-        } else {
-          this.message = '';
-        }
+        this.allRides = rides;
+        this.applyFilter();
       },
       error: err => {
         console.error(err);
@@ -40,25 +36,26 @@ export class RideList implements OnInit {
     });
   }
 
-  // Filter by vehicle type
-  filterByType() {
-    if (!this.vehicleType) {
-      this.loadRides();
+  onTypeChange(type: VehicleType | '') {
+    this.vehicleType = type;
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    if (this.vehicleType) {
+      this.rides = this.allRides.filter(r => r.vehicleType === this.vehicleType);
+      if (this.rides.length === 0) {
+        this.message = `No ${this.vehicleType} rides available today.`;
+      } else {
+        this.message = '';
+      }
     } else {
-      this.rideService.filterByVehicleType(this.vehicleType).subscribe({
-        next: rides => {
-          this.rides = rides;
-          if (rides.length === 0) {
-            this.message = `No ${this.vehicleType} rides available today.`;
-          } else {
-            this.message = '';
-          }
-        },
-        error: err => {
-          console.error(err);
-          this.message = 'Failed to filter rides.';
-        }
-      });
+      this.rides = [...this.allRides];
+      if (this.rides.length === 0) {
+        this.message = 'No rides available for today.';
+      } else {
+        this.message = '';
+      }
     }
   }
 }
