@@ -1,0 +1,50 @@
+<h2>Pick a Ride</h2>
+
+<form [formGroup]="form" (ngSubmit)="searchRides()">
+  <div>
+    <label>Employee ID*</label>
+    <input formControlName="employeeId" />
+  </div>
+  <div>
+    <label>Preferred Time* (HH:mm)</label>
+    <input type="time" formControlName="time" />
+  </div>
+  <div>
+    <label>Vehicle Type</label>
+    <select formControlName="vehicleType">
+      <option *ngFor="let v of vehicleTypes" [value]="v">{{ v }}</option>
+    </select>
+  </div>
+  <button type="submit">Search Rides</button>
+</form>
+
+<p class="message" *ngIf="message">{{ message }}</p>
+
+<table *ngIf="rides.length > 0">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Vehicle</th>
+      <th>Vehicle No</th>
+      <th>Vacant Seats</th>
+      <th>Pickup</th>
+      <th>Destination</th>
+      <th>Creator Employee ID</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of rides">
+      <td>{{ r.time }}</td>
+      <td>{{ r.vehicleType }}</td>
+      <td>{{ r.vehicleNo }}</td>
+      <td>{{ r.vacantSeats }}</td>
+      <td>{{ r.pickupPoint }}</td>
+      <td>{{ r.destination }}</td>
+      <td>{{ r.creatorEmployeeId }}</td>
+      <td>
+        <button (click)="bookRide(r)" [disabled]="r.vacantSeats < 1">Book</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

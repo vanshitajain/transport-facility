@@ -1,0 +1,36 @@
+<h2>Add a new ride (today only)</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label>Employee ID*</label>
+    <input formControlName="creatorEmployeeId" />
+  </div>
+  <div>
+    <label>Vehicle Type*</label>
+    <select formControlName="vehicleType">
+      <option *ngFor="let v of vehicleTypes" [value]="v">{{ v }}</option>
+    </select>
+  </div>
+  <div>
+    <label>Vehicle No*</label>
+    <input formControlName="vehicleNo" />
+  </div>
+  <div>
+    <label>Vacant Seats*</label>
+    <input type="number" formControlName="vacantSeats" min="1" />
+  </div>
+  <div>
+    <label>Time* (HH:mm)</label>
+    <input type="time" formControlName="time" />
+  </div>
+  <div>
+    <label>Pick-up Point*</label>
+    <input formControlName="pickupPoint" />
+  </div>
+  <div>
+    <label>Destination*</label>
+    <input formControlName="destination" />
+  </div>
+  <button type="submit">Add Ride</button>
+</form>
+
+<p class="message" *ngIf="message">{{ message }}</p>
