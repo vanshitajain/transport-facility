@@ -34,7 +34,7 @@ vehicleTypes: VehicleType[] = ['Bike', 'Car'];
         seatsControl?.setValidators([Validators.required, Validators.min(1), Validators.max(1)]);
         if (seatsControl?.value && seatsControl.value > 1) seatsControl.setValue(1);
       } else {
-        seatsControl?.setValidators([Validators.required, Validators.min(1), Validators.max(7)]);
+        seatsControl?.setValidators([Validators.required, Validators.min(1), Validators.max(5)]);
       }
       seatsControl?.updateValueAndValidity();
     });

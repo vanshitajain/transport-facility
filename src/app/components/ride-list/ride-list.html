@@ -1,5 +1,6 @@
-<h2>Today's Rides</h2>
-
+<h2>
+  Today's Rides - {{ todayDate | date:'fullDate' }}
+</h2>
 <div class="filters">
   <label>Filter by vehicle type:</label>
   <select [ngModel]="vehicleType" (ngModelChange)="onTypeChange($event)">

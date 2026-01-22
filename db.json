@@ -1,77 +1,78 @@
 {
   "rides": [
     {
-      "id": "d878eb4f-a0d2-4b8d-a513-94fc8b4cc5d8",
+      "id": "ride-001",
       "date": "2026-01-22",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "12345",
+      "time": "08:15",
+      "vehicleType": "Car",
+      "vehicleNo": "KA 05 AB 1234",
+      "vacantSeats": 3,
+      "pickupPoint": "Whitefield",
+      "destination": "Electronic City",
+      "creatorEmployeeId": "E1001",
+      "bookedEmployeeIds": ["E2001", "E2002"]
+    },
+    {
+      "id": "ride-002",
+      "date": "2026-01-22",
+      "time": "09:30",
+      "vehicleType": "Bike",
+      "vehicleNo": "KA 03 XY 5678",
+      "vacantSeats": 1,
+      "pickupPoint": "HSR Layout",
+      "destination": "Koramangala",
+      "creatorEmployeeId": "E1002",
+      "bookedEmployeeIds": []
+    },
+    {
+      "id": "ride-003",
+      "date": "2026-01-22",
+      "time": "14:00",
+      "vehicleType": "Car",
+      "vehicleNo": "TN 10 CD 4321",
+      "vacantSeats": 2,
+      "pickupPoint": "Sholinganallur",
+      "destination": "Marathahalli",
+      "creatorEmployeeId": "E1003",
+      "bookedEmployeeIds": ["E2003"]
+    },
+    {
+      "id": "ride-004",
+      "date": "2026-01-22",
+      "time": "18:24",
+      "vehicleType": "Bike",
+      "vehicleNo": "KA 01 ZZ 9999",
+      "vacantSeats": 1,
+      "pickupPoint": "Indiranagar",
+      "destination": "MG Road",
+      "creatorEmployeeId": "E1004",
+      "bookedEmployeeIds": []
+    },
+    {
+      "id": "ride-005",
+      "date": "2026-01-22",
+      "time": "19:25",
+      "vehicleType": "Car",
+      "vehicleNo": "KA 02 PQ 2468",
+      "vacantSeats": 4,
+      "pickupPoint": "BTM Layout",
+      "destination": "Hebbal",
+      "creatorEmployeeId": "E1005",
+      "bookedEmployeeIds": ["E2004", "E2005"]
+    },
+    {
+      "id": "ride-006",
+      "date": "2026-01-22",
+      "time": "22:40",
       "vehicleType": "Bike",
       "vehicleNo": "UP 12345",
       "vacantSeats": 1,
-      "time": "22:40",
-      "pickupPoint": "blr",
-      "destination": "Chennai"
-    },
-    {
-      "id": "f6ca2245-33ab-4b9c-abb8-101bb3cf9cf8",
-      "date": "2026-01-22",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "12345",
-      "vehicleType": "Bike",
-      "vehicleNo": "123456",
-      "vacantSeats": 1,
-      "time": "21:59",
-      "pickupPoint": "chennai",
-      "destination": "kerala"
-    },
-    {
-      "id": "9aa08fab-7b2e-4080-a7dd-e726a0893686",
-      "date": "2026-01-22",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "123",
-      "vehicleType": "Car",
-      "vehicleNo": "123456",
-      "vacantSeats": 1,
-      "time": "22:14",
-      "pickupPoint": "chennai",
-      "destination": "kerala"
-    },
-    {
-      "id": "ff291fae-a802-4c19-8eda-4c63b678c35a",
-      "date": "2026-01-22",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "123",
-      "vehicleType": "Bike",
-      "vehicleNo": "1234567",
-      "vacantSeats": 1,
-      "time": "22:47",
-      "pickupPoint": "dsdg",
-      "destination": "ewrt"
-    },
-    {
-      "id": "02ceb6d1-a1b2-44c1-9768-6c71fb5e70e3",
-      "date": "2026-01-22",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "123",
-      "vehicleType": "Bike",
-      "vehicleNo": "123456",
-      "vacantSeats": 1,
-      "time": "23:26",
-      "pickupPoint": "chennai",
-      "destination": "kerala"
-    },
-    {
-      "id": "bcbaf28a-c7a3-4260-bc89-c5c5658b1fad",
-      "date": "2026-01-21",
-      "bookedEmployeeIds": [],
-      "creatorEmployeeId": "123",
-      "vehicleType": "Bike",
-      "vehicleNo": "2134244",
-      "vacantSeats": 1,
-      "time": "23:33",
-      "pickupPoint": "chennai",
-      "destination": "kerala"
+      "pickupPoint": "Bengaluru Airport",
+      "destination": "HSR Layout",
+      "creatorEmployeeId": "E1006",
+      "bookedEmployeeIds": []
     }
   ],
+
   "bookings": []
 }

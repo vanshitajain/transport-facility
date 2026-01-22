@@ -16,13 +16,22 @@ export class RideList implements OnInit {
   rides: Ride[] = [];
   vehicleType: VehicleType | '' = '';
   message = '';
-
+  todayDate: Date = new Date();
   constructor(private rideService: RideService) {}
 
   ngOnInit(): void {
     this.loadRides();
+    this.sortRides(this.rides);
+
   }
 
+  private sortRides(rides: Ride[]): Ride[] {
+  return rides.sort((a, b) => {
+    const dateTimeA = new Date(`${a.date}T${a.time}:00`).getTime();
+    const dateTimeB = new Date(`${b.date}T${b.time}:00`).getTime();
+    return dateTimeA - dateTimeB;
+  });
+}
   loadRides() {
     this.rideService.getRides().subscribe({
       next: rides => {
@@ -42,6 +51,7 @@ export class RideList implements OnInit {
   }
 
   applyFilter() {
+    this.sortRides(this.allRides);
     if (this.vehicleType) {
       this.rides = this.allRides.filter(r => r.vehicleType === this.vehicleType);
       if (this.rides.length === 0) {
