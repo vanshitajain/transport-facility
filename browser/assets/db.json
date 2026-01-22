@@ -1,0 +1,78 @@
+{
+  "rides": [
+    {
+      "id": "ride-001",
+      "date": "2026-01-22",
+      "time": "08:15",
+      "vehicleType": "Car",
+      "vehicleNo": "KA 05 AB 1234",
+      "vacantSeats": 3,
+      "pickupPoint": "Whitefield",
+      "destination": "Electronic City",
+      "creatorEmployeeId": "E1001",
+      "bookedEmployeeIds": ["E2001", "E2002"]
+    },
+    {
+      "id": "ride-002",
+      "date": "2026-01-22",
+      "time": "09:30",
+      "vehicleType": "Bike",
+      "vehicleNo": "KA 03 XY 5678",
+      "vacantSeats": 1,
+      "pickupPoint": "HSR Layout",
+      "destination": "Koramangala",
+      "creatorEmployeeId": "E1002",
+      "bookedEmployeeIds": []
+    },
+    {
+      "id": "ride-003",
+      "date": "2026-01-22",
+      "time": "14:00",
+      "vehicleType": "Car",
+      "vehicleNo": "TN 10 CD 4321",
+      "vacantSeats": 2,
+      "pickupPoint": "Sholinganallur",
+      "destination": "Marathahalli",
+      "creatorEmployeeId": "E1003",
+      "bookedEmployeeIds": ["E2003"]
+    },
+    {
+      "id": "ride-004",
+      "date": "2026-01-22",
+      "time": "18:24",
+      "vehicleType": "Bike",
+      "vehicleNo": "KA 01 ZZ 9999",
+      "vacantSeats": 1,
+      "pickupPoint": "Indiranagar",
+      "destination": "MG Road",
+      "creatorEmployeeId": "E1004",
+      "bookedEmployeeIds": []
+    },
+    {
+      "id": "ride-005",
+      "date": "2026-01-22",
+      "time": "19:25",
+      "vehicleType": "Car",
+      "vehicleNo": "KA 02 PQ 2468",
+      "vacantSeats": 4,
+      "pickupPoint": "BTM Layout",
+      "destination": "Hebbal",
+      "creatorEmployeeId": "E1005",
+      "bookedEmployeeIds": ["E2004", "E2005"]
+    },
+    {
+      "id": "ride-006",
+      "date": "2026-01-22",
+      "time": "22:40",
+      "vehicleType": "Bike",
+      "vehicleNo": "UP 12345",
+      "vacantSeats": 1,
+      "pickupPoint": "Bengaluru Airport",
+      "destination": "HSR Layout",
+      "creatorEmployeeId": "E1006",
+      "bookedEmployeeIds": []
+    }
+  ],
+
+  "bookings": []
+}
